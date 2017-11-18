@@ -11,7 +11,7 @@ an external file and want to ensure you can still
 read the file even when your app is a dependency.
 
 However you must include file `config/config.exs`
-in the package definition found in file `mix.exs`:
+in the package definition of file `mix.exs`:
 
 ```elixir
 def project() do
@@ -25,7 +25,7 @@ end
 ...
 defp package() do
   [
-    files: ["lib", "mix.exs", "README*", <b>"config/config.exs"</b>],
+    files: ["lib", "mix.exs", "README*", "config/config.exs"],
     maintainers: ["***"],
     licenses: ["***"],
     links: %{...}
@@ -59,4 +59,3 @@ use PersistConfig
 use PersistConfig, app: :my_app
 @my_attr Application.get_env(@my_app, :my_attr)
 ```
-"""
