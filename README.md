@@ -1,0 +1,39 @@
+# PersistConfig
+
+Persists the project configuration and puts the
+configured application in module attribute :app
+or in a module attribute of your choice.
+
+When your project is used as a dependency, this
+package will allow your configuration to persist.
+For example, if you configured some path to read
+an external file and want to ensure you can still
+read the file even when your app is a dependency.
+
+## Installation
+
+Add the `:persist_config` dependency to your `mix.exs` file:
+
+```elixir
+def deps() do
+  [
+    {:persist_config, "~> 0.1"}
+  ]
+end
+```
+
+## Usage
+
+```elixir
+use PersistConfig
+@path Application.get_env(@app, :path)
+...
+{:ok, contents} = File.read(@path)
+...
+```
+
+```elixir
+use PersistConfig, app: :my_app
+@my_attr Application.get_env(@my_app, :my_attr)
+```
+"""
