@@ -10,6 +10,29 @@ For example, if you configured some path to read
 an external file and want to ensure you can still
 read the file even when your app is a dependency.
 
+However you must include file `config/config.exs`
+in the package definition found in file `mix.exs`:
+
+```elixir
+def project() do
+  [
+    app: :your_app,
+    ...
+    package: package(),
+    ...
+  ]
+end
+...
+defp package() do
+  [
+    files: ["lib", "mix.exs", "README*", <b>"config/config.exs"</b>],
+    maintainers: ["***"],
+    licenses: ["***"],
+    links: %{...}
+  ]
+end
+```
+
 ## Installation
 
 Add the `:persist_config` dependency to your `mix.exs` file:
