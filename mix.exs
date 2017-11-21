@@ -45,7 +45,7 @@ defmodule PersistConfig.Mixfile do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:mix_tasks, path: "../mix_tasks"},
+      {:mix_tasks, path: "../mix_tasks", only: :dev, runtime: false},
       {:earmark, "~> 1.0", only: :dev},
       {:ex_doc, "~> 0.14", only: :dev, runtime: false},
       {:dialyxir, "~> 0.5", only: :dev, runtime: false}
