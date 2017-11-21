@@ -4,14 +4,15 @@ defmodule PersistConfig.Mixfile do
   def project do
     [
       app: :persist_config,
-      version: "0.1.2",
+      version: "0.1.3",
       elixir: "~> 1.5",
       start_permanent: Mix.env == :prod,
       name: "Persist Config",
       source_url: source_url(),
       description: description(),
       package: package(),
-      deps: deps()
+      deps: deps(),
+      dialyzer: [plt_add_apps: [:mix]]
     ]
   end
 
@@ -44,8 +45,10 @@ defmodule PersistConfig.Mixfile do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:mix_tasks, path: "../mix_tasks"},
       {:earmark, "~> 1.0", only: :dev},
-      {:ex_doc, "~> 0.14", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.14", only: :dev, runtime: false},
+      {:dialyxir, "~> 0.5", only: :dev, runtime: false}
     ]
   end
 end
