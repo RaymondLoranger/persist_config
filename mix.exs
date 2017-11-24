@@ -1,10 +1,10 @@
 defmodule PersistConfig.Mixfile do
   use Mix.Project
 
-  def project do
+  def project() do
     [
       app: :persist_config,
-      version: "0.1.4",
+      version: "0.1.5",
       elixir: "~> 1.5",
       start_permanent: Mix.env == :prod,
       name: "Persist Config",
@@ -22,7 +22,7 @@ defmodule PersistConfig.Mixfile do
 
   defp description() do
     """
-    Persists the project configuration.
+    Persists the configuration file.
     """
   end
 
@@ -36,14 +36,14 @@ defmodule PersistConfig.Mixfile do
   end
 
   # Run "mix help compile.app" to learn about applications.
-  def application do
+  def application() do
     [
       extra_applications: [:logger]
     ]
   end
 
   # Run "mix help deps" to learn about dependencies.
-  defp deps do
+  defp deps() do
     [
       {:mix_tasks, path: "../mix_tasks", only: :dev, runtime: false},
       {:earmark, "~> 1.0", only: :dev},

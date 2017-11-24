@@ -1,8 +1,7 @@
 defmodule PersistConfig do
   @moduledoc """
-  Persists the project configuration and puts the
-  configured application in module attribute :app
-  or in a module attribute of your choice.
+  Persists your configuration file and puts the app
+  in module attribute :app or in one of your choice.
 
   ## Usage
 

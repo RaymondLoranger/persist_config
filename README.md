@@ -1,17 +1,16 @@
 # PersistConfig
 
-Persists the project configuration and puts the
-configured application in module attribute :app
-or in a module attribute of your choice.
+Persists your configuration file and puts the app
+in module attribute :app or in one of your choice.
 
 When your project is used as a dependency, this
-package will allow your configuration to persist.
+package will allow your config file to persist.
 For example, if you configured some path to read
 an external file and want to ensure you can still
 read the file even when your app is a dependency.
 
 However you must include file `config/config.exs`
-in the package definition of file `mix.exs`:
+in the package definition of your `mix.exs` file:
 
 ```elixir
 def project() do
