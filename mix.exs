@@ -4,15 +4,14 @@ defmodule PersistConfig.Mixfile do
   def project() do
     [
       app: :persist_config,
-      version: "0.1.6",
+      version: "0.1.7",
       elixir: "~> 1.5",
       start_permanent: Mix.env == :prod,
       name: "Persist Config",
       source_url: source_url(),
       description: description(),
       package: package(),
-      deps: deps(),
-      dialyzer: [plt_add_apps: [:mix]]
+      deps: deps()
     ]
   end
 
