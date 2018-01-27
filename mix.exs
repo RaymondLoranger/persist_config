@@ -1,12 +1,12 @@
 defmodule PersistConfig.Mixfile do
   use Mix.Project
 
-  def project() do
+  def project do
     [
       app: :persist_config,
-      version: "0.1.7",
+      version: "0.1.8",
       elixir: "~> 1.5",
-      start_permanent: Mix.env == :prod,
+      start_permanent: Mix.env() == :prod,
       name: "Persist Config",
       source_url: source_url(),
       description: description(),
@@ -15,17 +15,17 @@ defmodule PersistConfig.Mixfile do
     ]
   end
 
-  defp source_url() do
+  defp source_url do
     "https://github.com/RaymondLoranger/persist_config"
   end
 
-  defp description() do
+  defp description do
     """
     Persists the configuration file.
     """
   end
 
-  defp package() do
+  defp package do
     [
       files: ["lib", "mix.exs", "README*"],
       maintainers: ["Raymond Loranger"],
@@ -35,14 +35,14 @@ defmodule PersistConfig.Mixfile do
   end
 
   # Run "mix help compile.app" to learn about applications.
-  def application() do
+  def application do
     [
       extra_applications: [:logger]
     ]
   end
 
   # Run "mix help deps" to learn about dependencies.
-  defp deps() do
+  defp deps do
     [
       {:mix_tasks, path: "../mix_tasks", only: :dev, runtime: false},
       {:earmark, "~> 1.0", only: :dev},

@@ -2,6 +2,7 @@
 # and its dependencies with the aid of the Mix.Config module.
 use Mix.Config
 
-config :elixir, ansi_enabled: true # mix messages in colors
+# Mix messages in colors...
+config :elixir, ansi_enabled: true
 
 #     import_config "#{Mix.env}.exs"

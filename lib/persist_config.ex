@@ -18,10 +18,12 @@ defmodule PersistConfig do
 
   defmacro __using__(options \\ []) do
     app = options[:app] || :app
+
     quote bind_quoted: [app: app] do
       Mix.Project.config()[:config_path]
       |> Mix.Config.read!()
       |> Mix.Config.persist()
+
       @external_resource Mix.Project.config()[:config_path] |> Path.expand()
       Module.put_attribute(__MODULE__, app, Mix.Project.config()[:app])
     end
