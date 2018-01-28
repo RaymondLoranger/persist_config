@@ -1,5 +1,5 @@
 defmodule PersistConfigTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   use PersistConfig
 
   doctest PersistConfig
