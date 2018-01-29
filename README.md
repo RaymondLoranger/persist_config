@@ -36,7 +36,6 @@ use PersistConfig, app :my_app
 ...
 @my_attr Application.get_env(@my_app, :my_attr)
 ```
-"""
 
 ## Installation
 
