@@ -19,8 +19,8 @@ For example, if you configured some path to read an external
 file and want to ensure you can still read that file even when
 your app is a dependency.
 
-However you must include the configuration files persist in the
-package definition of `mix.exs` (here "config/persist_me.exs").
+However you must include the configuration files to be persisted
+in the package definition of the `mix.exs` file as shown below.
 
 ```elixir
 def project do
@@ -34,7 +34,7 @@ end
 ...
 defp package do
   [
-    files: ["lib", "mix.exs", "README*", "config/persist_me.exs"],
+    files: ["lib", "mix.exs", "README*", "config/persist*.exs"],
     maintainers: ["***"],
     licenses: ["***"],
     links: %{...}
