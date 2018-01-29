@@ -9,7 +9,7 @@ to put the current app.
 Option `:files` lists the configuration files to be persisted.
 Each entry represents a (wildcard) path relative to the root.
 If the list is or ends up being empty, no files are persisted.
-Each resulting configuration file must eventually be imported.
+Configuration files must be imported in the `config/config.exs`.
 For example: `import_config "config/persist_this_config.exs"`.
 
 When your project is used as a dependency, this package will
