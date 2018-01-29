@@ -1,6 +1,6 @@
 defmodule PersistConfigAppTest do
   use ExUnit.Case, async: true
-  use PersistConfig, app_attr: :this_app
+  use PersistConfig, app: :this_app
 
   doctest PersistConfig
 

@@ -1,37 +1,38 @@
 defmodule PersistConfig do
   @moduledoc """
-  Persists configuration files and puts the current app
-  in module attribute @app (or in one of your choice).
+  Persists configuration files and puts the current app in a module attribute.
 
-  Option `:app_attr` identifies the module attribute where
-  to put the current app.
+  ## use PersistConfig
+
+  Supports the following options:
+
+  - `:app`   - module attribute to hold the current app, defaults to `:app`
+  - `:files` - (wildcard) paths, defaults to `["config/persist*.exs"]`
 
   Option `:files` lists the configuration files to be persisted.
-  Each entry represents a (wildcard) path relative to the root.
-  If the list is or ends up being empty, no files are persisted.
-  Configuration files must be imported in the `config/config.exs`.
+  These are typically imported in the `config/config.exs` file.
   For example: `import_config "config/persist_this_config.exs"`.
 
-  ## Options
-
-    - `:app_attr` - module attribute for current app, defaults to `:app`
-    - `:files`    - (wildcard) paths, defaults to `["config/persist*.exs"]`
+  Each entry represents a (wildcard) path relative to the root.
+  If the list is or ends up being empty, no files are persisted.
 
   ## Usage
 
   ```elixir
-  use PersistConfig files: ["config/persist_styles.exs"]
-  @some_value Application.get_env(@app, :some_key)
+  use PersistConfig files: ["config/persist_path.exs"]
+  ...
+  @path Application.get_env(@app, :path)
   ```
 
   ```elixir
-  use PersistConfig, app_attr: :my_app
-  @my_value Application.get_env(@my_app, :my_key)
+  use PersistConfig, app :my_app
+  ...
+  @my_attr Application.get_env(@my_app, :my_attr)
   ```
   """
 
   defmacro __using__(options \\ []) do
-    app = options[:app_attr] || :app
+    app = options[:app] || :app
     files = options[:files] || ["config/persist*.exs"]
     files = files |> Enum.map(&Path.wildcard/1) |> List.flatten()
 
