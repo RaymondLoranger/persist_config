@@ -69,17 +69,3 @@ defp package do
   ]
 end
 ```
-
-## Usage
-
-```elixir
-use PersistConfig files: ["config/persist_path.exs"]
-...
-@path Application.get_env(@app, :path)
-```
-
-```elixir
-use PersistConfig, app :my_app
-...
-@my_attr Application.get_env(@my_app, :my_attr)
-```
