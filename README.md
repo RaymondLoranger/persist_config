@@ -70,6 +70,6 @@ use PersistConfig
 ```
 
 ```elixir
-use PersistConfig, app: :my_app
+use PersistConfig, app_attr: :my_app
 @my_attr Application.get_env(@my_app, :my_attr)
 ```
