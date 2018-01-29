@@ -20,8 +20,8 @@ When your project is used as a dependency, this package will
 allow the specified configuration files to be persisted.
 
 For example, if you configured some path to read an external
-file and want to still read that file even when your app is a
-dependency without configuration in the parent application.
+file and want to still read that file when your app is a
+dependency (without path configuration in the parent app).
 
 ## Usage
 
