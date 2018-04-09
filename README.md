@@ -1,5 +1,7 @@
 # PersistConfig
 
+[![Build Status](https://travis-ci.org/RaymondLoranger/persist_config.svg?branch=master)](https://travis-ci.org/RaymondLoranger/persist_config)
+
 Persists configuration files and puts the current app in a module attribute.
 
 ## use PersistConfig
