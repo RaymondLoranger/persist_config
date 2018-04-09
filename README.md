@@ -54,7 +54,7 @@ def project do
   ]
 end
 ...
-def deps() do
+def deps do
   [
     {:persist_config, "~> 0.2"}
   ]
