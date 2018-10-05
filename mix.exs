@@ -4,7 +4,7 @@ defmodule PersistConfig.Mixfile do
   def project do
     [
       app: :persist_config,
-      version: "0.2.6",
+      version: "0.2.7",
       elixir: "~> 1.5",
       start_permanent: Mix.env() == :prod,
       name: "Persist Config",
@@ -46,7 +46,7 @@ defmodule PersistConfig.Mixfile do
     [
       {:mix_tasks,
        github: "RaymondLoranger/mix_tasks", only: :dev, runtime: false},
-      {:earmark, "~> 1.0", only: :dev},
+      {:earmark, "== 1.2.5", only: :dev},
       {:ex_doc, "~> 0.14", only: :dev, runtime: false},
       {:dialyxir, "~> 0.5", only: :dev, runtime: false}
     ]

@@ -38,7 +38,7 @@ defmodule PersistConfig do
 
     quote bind_quoted: [app: app, files: files] do
       Enum.each(files, fn file ->
-        file |> Mix.Config.read!() |> Mix.Config.persist()
+        file |> Mix.Config.eval!() |> elem(0) |> Mix.Config.persist()
         @external_resource Path.expand(file)
       end)
 
