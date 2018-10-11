@@ -21,7 +21,7 @@ defmodule PersistConfig.Mixfile do
 
   defp description do
     """
-    Persists selected configuration files.
+    Persists specified configuration files.
     """
   end
 
