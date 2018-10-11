@@ -4,7 +4,7 @@ defmodule PersistConfig.Mixfile do
   def project do
     [
       app: :persist_config,
-      version: "0.2.7",
+      version: "0.2.8",
       elixir: "~> 1.5",
       start_permanent: Mix.env() == :prod,
       name: "Persist Config",
@@ -21,7 +21,7 @@ defmodule PersistConfig.Mixfile do
 
   defp description do
     """
-    Persists the configuration file.
+    Persists selected configuration files.
     """
   end
 
