@@ -41,9 +41,9 @@ use PersistConfig, app :my_app
 
 ## Installation
 
-Add the `:persist_config` dependency to your `mix.exs` file.
+Add `persist_config` to your list of dependencies in `mix.exs`.
 Also include the configuration files to be persisted in the package definition
-of the `mix.exs` file as shown below.
+of `mix.exs` as shown below:
 
 ```elixir
 def project do
@@ -64,7 +64,7 @@ end
 ...
 defp package do
   [
-    files: ["lib", "mix.exs", "README*", "config/persist*.exs"],
+    files: ["lib", "mix.exs", "README*", **"config/persist*.exs"**],
     maintainers: ["***"],
     licenses: ["***"],
     links: %{...}
