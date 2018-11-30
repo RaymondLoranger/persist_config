@@ -64,7 +64,7 @@ end
 ...
 defp package do
   [
-    files: ["lib", "mix.exs", "README*", **"config/persist*.exs"**],
+    files: ["lib", "mix.exs", "README*", "config/persist*.exs"],
     maintainers: ["***"],
     licenses: ["***"],
     links: %{...}
