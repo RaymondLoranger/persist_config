@@ -28,7 +28,7 @@ dependency (without any path configuration in the parent app).
 ## Usage
 
 ```elixir
-use PersistConfig files: ["config/persist_path.exs"]
+use PersistConfig, files: ["config/persist_path.exs"]
 ...
 @path Application.get_env(@app, :path)
 ```
