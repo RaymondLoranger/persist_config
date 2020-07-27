@@ -2,13 +2,17 @@
 
 [![Build Status](https://travis-ci.org/RaymondLoranger/persist_config.svg?branch=master)](https://travis-ci.org/RaymondLoranger/persist_config)
 
-Persists configuration files and puts the current app in a module attribute.
+Persists, at compile time, a list of configuration files and
+puts the current application name in a module attribute.
+
+Also includes macros for concise configuration value retrieval.
 
 ## use PersistConfig
 
 Supports the following options:
 
-- `:app`   - module attribute to hold the current app, defaults to `:app`
+- `:app`   - module attribute to hold the current application name,
+             defaults to `:app`
 - `:files` - (wildcard) paths, defaults to `["config/persist*.exs"]`
 
 Option `:files` lists the configuration files to be persisted.
@@ -30,13 +34,14 @@ dependency (without any path configuration in the parent app).
 ```elixir
 use PersistConfig, files: ["config/persist_path.exs"]
 ...
-@path Application.get_env(@app, :path)
+@all_env Application.get_all_env(@app)
+@path fetch_env!(:path)
 ```
 
 ```elixir
 use PersistConfig, app :my_app
 ...
-@my_attr Application.get_env(@my_app, :my_attr)
+@my_attr fetch_env!(@my_app, :my_attr)
 ```
 
 ## Installation
@@ -58,7 +63,7 @@ end
 ...
 def deps do
   [
-    {:persist_config, "~> 0.2"}
+    {:persist_config, "~> 0.3"}
   ]
 end
 ...

@@ -1,6 +1,6 @@
 defmodule PersistConfig do
   @moduledoc """
-  Persists a list of configuration files and
+  Persists, at compile time, a list of configuration files and
   puts the current application name in a module attribute.
 
   Also includes macros for concise configuration value retrieval.
@@ -20,6 +20,13 @@ defmodule PersistConfig do
   Each entry represents a (wildcard) path relative to the root.
   If the list is or ends up being empty, no files are persisted.
 
+  When your project is used as a dependency, this package will
+  allow the specified configuration files to be persisted.
+
+  For example, if you configured some path to read an external
+  file and want to still read that file when your app is a
+  dependency (without any path configuration in the parent app).
+
   ## Usage
 
   ```elixir
@@ -32,8 +39,40 @@ defmodule PersistConfig do
   ```elixir
   use PersistConfig, app: :my_app
   ...
-  @my_attr Application.fetch_env!(@my_app, :my_attr)
+  @my_attr fetch_env!(@my_app, :my_attr)
   ```
+
+  ## Installation
+
+  Add `persist_config` to your list of dependencies in `mix.exs`.
+  Also include the configuration files to be persisted in the package definition
+  of `mix.exs` as shown below:
+
+  ```elixir
+  def project do
+    [
+      app: :your_app,
+      ...
+      deps: deps(),
+      package: package(),
+      ...
+    ]
+  end
+  ...
+  def deps do
+    [
+      {:persist_config, "~> 0.3"}
+    ]
+  end
+  ...
+  defp package do
+    [
+      files: ["lib", "mix.exs", "README*", "config/persist*.exs"],
+      maintainers: ["***"],
+      licenses: ["***"],
+      links: %{...}
+    ]
+  end
   """
 
   defmacro __using__(options \\ []) do
