@@ -3,7 +3,7 @@ defmodule PersistConfig do
   Persists, at compile time, a list of configuration files and
   puts the current application name in a module attribute.
 
-  Also includes macros for concise configuration value retrieval.
+  Also includes a `get_env` macro for concise configuration value retrieval.
 
   ## use PersistConfig
 
@@ -33,13 +33,13 @@ defmodule PersistConfig do
   use PersistConfig, files: ["config/persist_path.exs"]
   ...
   @all_env Application.get_all_env(@app)
-  @path fetch_env(:path)
+  @path get_env(:path)
   ```
 
   ```elixir
   use PersistConfig, app: :my_app
   ...
-  @my_attr fetch_env(@my_app, :my_attr)
+  @my_attr Application.get_env(@my_app, :my_attr)
   ```
 
   ## Installation
@@ -93,25 +93,16 @@ defmodule PersistConfig do
   end
 
   @doc """
-  Returns the value for `key` in `app`'s environment.
+  Returns the value for `key` in in the current application's environment.
 
-  If the configuration parameter does not exist, returns `:error`.
+  If the configuration parameter does not exist, returns the `default` value.
   """
-  @doc since: "0.3.0"
-  defmacro fetch_env(app, key) do
-    quote bind_quoted: [app: app, key: key] do
-      Application.fetch_env(app, key)
-    end
-  end
-
-  @doc """
-  Returns the value for `key` in the current application's environment.
-
-  If the configuration parameter does not exist, returns `:error`.
-  """
-  @doc since: "0.3.0"
-  defmacro fetch_env(key) do
+  @doc since: "0.3.3"
+  defmacro get_env(key, default \\ nil) do
     app = Mix.Project.config()[:app]
-    fetch_env(app, key)
+
+    quote bind_quoted: [app: app, key: key, default: default] do
+      :application.get_env(app, key, default)
+    end
   end
 end

@@ -5,7 +5,7 @@
 Persists, at compile time, a list of configuration files and
 puts the current application name in a module attribute.
 
-Also includes macros for concise configuration value retrieval.
+Also includes a `get_env` macro for concise configuration value retrieval.
 
 ## use PersistConfig
 
@@ -35,13 +35,13 @@ dependency (without any path configuration in the parent app).
 use PersistConfig, files: ["config/persist_path.exs"]
 ...
 @all_env Application.get_all_env(@app)
-@path fetch_env(:path)
+@path get_env(:path)
 ```
 
 ```elixir
 use PersistConfig, app :my_app
 ...
-@my_attr fetch_env(@my_app, :my_attr)
+@my_attr Application.get_env(@my_app, :my_attr)
 ```
 
 ## Installation
