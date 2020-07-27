@@ -61,7 +61,7 @@ defmodule PersistConfig do
   ...
   def deps do
     [
-      {:persist_config, "~> 0.3"}
+      {:persist_config, "~> 0.4"}
     ]
   end
   ...
@@ -97,7 +97,7 @@ defmodule PersistConfig do
 
   If the configuration parameter does not exist, returns the `default` value.
   """
-  @doc since: "0.3.3"
+  @doc since: "0.4.0"
   defmacro get_env(key, default \\ nil) do
     app = Mix.Project.config()[:app]
 

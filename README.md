@@ -63,7 +63,7 @@ end
 ...
 def deps do
   [
-    {:persist_config, "~> 0.3"}
+    {:persist_config, "~> 0.4"}
   ]
 end
 ...
