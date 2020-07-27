@@ -33,13 +33,13 @@ defmodule PersistConfig do
   use PersistConfig, files: ["config/persist_path.exs"]
   ...
   @all_env Application.get_all_env(@app)
-  @path fetch_env!(:path)
+  @path fetch_env(:path)
   ```
 
   ```elixir
   use PersistConfig, app: :my_app
   ...
-  @my_attr fetch_env!(@my_app, :my_attr)
+  @my_attr fetch_env(@my_app, :my_attr)
   ```
 
   ## Installation
@@ -95,23 +95,23 @@ defmodule PersistConfig do
   @doc """
   Returns the value for `key` in `app`'s environment.
 
-  If the configuration parameter does not exist, raises `ArgumentError`.
+  If the configuration parameter does not exist, returns `:error`.
   """
   @doc since: "0.3.0"
-  defmacro fetch_env!(app, key) do
+  defmacro fetch_env(app, key) do
     quote bind_quoted: [app: app, key: key] do
-      Application.fetch_env!(app, key)
+      Application.fetch_env(app, key)
     end
   end
 
   @doc """
   Returns the value for `key` in the current application's environment.
 
-  If the configuration parameter does not exist, raises `ArgumentError`.
+  If the configuration parameter does not exist, returns `:error`.
   """
   @doc since: "0.3.0"
-  defmacro fetch_env!(key) do
+  defmacro fetch_env(key) do
     app = Mix.Project.config()[:app]
-    fetch_env!(app, key)
+    fetch_env(app, key)
   end
 end

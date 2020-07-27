@@ -35,13 +35,13 @@ dependency (without any path configuration in the parent app).
 use PersistConfig, files: ["config/persist_path.exs"]
 ...
 @all_env Application.get_all_env(@app)
-@path fetch_env!(:path)
+@path fetch_env(:path)
 ```
 
 ```elixir
 use PersistConfig, app :my_app
 ...
-@my_attr fetch_env!(@my_app, :my_attr)
+@my_attr fetch_env(@my_app, :my_attr)
 ```
 
 ## Installation
