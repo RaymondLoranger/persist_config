@@ -5,7 +5,7 @@
 Persists, at compile time, a list of configuration files and
 puts the current application name in a module attribute.
 
-Also includes a `get_env` macro for concise configuration value retrieval.
+Also provides a `get_env` macro for concise configuration value retrieval.
 
 ## use PersistConfig
 
