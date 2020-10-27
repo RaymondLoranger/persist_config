@@ -24,7 +24,7 @@ defmodule PersistConfig do
   allow the specified configuration files to be persisted.
 
   For example, if you configured some path to read an external
-  file and want to still read that file when your app is a
+  file and want to still read that very file when your app is a
   dependency (without any path configuration in the parent app).
 
   ## Usage
