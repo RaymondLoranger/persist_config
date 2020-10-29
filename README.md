@@ -25,7 +25,7 @@ If the list is or ends up being empty, no files are persisted.
 When your project is used as a dependency, this package will
 allow the specified configuration files to be persisted.
 
-For example, if you configured some path to read an external
+For example, you may configure some path to read an external
 file and want to still read that very file when your app is a
 dependency (without any path configuration in the parent app).
 
