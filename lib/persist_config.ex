@@ -61,7 +61,7 @@ defmodule PersistConfig do
   ...
   def deps do
     [
-      {:persist_config, "~> 0.4"}
+      {:persist_config, "~> 0.4", runtime: false}
     ]
   end
   ...
