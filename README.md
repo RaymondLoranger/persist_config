@@ -16,7 +16,7 @@ Supports the following options:
 - `:files` - (wildcard) paths, defaults to `["config/persist*.exs"]`
 
 Option `:files` lists the configuration files to be persisted.
-These are typically imported in the `config/config.exs` file.
+These could still be imported in the `config/config.exs` file.
 For example: `import_config "persist_this_config.exs"`.
 
 Each entry represents a (wildcard) path relative to the root.
