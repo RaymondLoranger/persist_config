@@ -5,16 +5,16 @@ defmodule PersistConfig do
 
   Also provides a `get_env` macro for concise configuration value retrieval.
 
-  ## use PersistConfig
+  ## Usage
 
-  Supports the following options:
+  `use PersistConfig` supports the following options:
 
   - `:app`   - module attribute to hold the current application name,
   defaults to `:app`
   - `:files` - (wildcard) paths, defaults to `["config/persist*.exs"]`
 
   Option `:files` lists the configuration files to be persisted.
-  These could still be imported in the `config/config.exs` file.
+  Though not needed, these can still be imported in file `config/config.exs`.
   For example: `import_config "persist_this_config.exs"`.
 
   Each entry represents a (wildcard) path relative to the root.
@@ -27,7 +27,9 @@ defmodule PersistConfig do
   file and want to still read that very file when your app is a
   dependency (without any path configuration in the parent app).
 
-  ## Usage
+  However, such configurations must truly be global and should otherwise be [avoided](https://hexdocs.pm/elixir/library-guidelines.html#avoid-application-configuration).
+
+  #### Example 1
 
   ```elixir
   use PersistConfig, files: ["config/persist_path.exs"]
@@ -36,10 +38,20 @@ defmodule PersistConfig do
   @path get_env(:path)
   ```
 
+  #### Example 2
+
   ```elixir
   use PersistConfig, app: :my_app
   ...
   @my_attr Application.get_env(@my_app, :my_attr)
+  ```
+
+  #### Example 3
+
+  ```elixir
+  use PersistConfig
+  ...
+  defp log?, do: get_env(:log?, true)
   ```
 
   ## Installation
