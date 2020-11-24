@@ -119,6 +119,12 @@ defmodule PersistConfig do
   @doc """
   Persists, at compile time, a list of configuration files and
   puts the current application name in a module attribute.
+
+  `use PersistConfig` supports the following options:
+
+  - `:app`   - module attribute to hold the current application name,
+  defaults to `:app`
+  - `:files` - (wildcard) paths, defaults to `["config/persist*.exs"]`
   """
   defmacro __using__(options \\ []) do
     app = options[:app] || :app
