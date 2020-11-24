@@ -2,16 +2,15 @@
 
 [![Build Status](https://travis-ci.org/RaymondLoranger/persist_config.svg?branch=master)](https://travis-ci.org/RaymondLoranger/persist_config)
 
-Persists, at compile time, a list of configuration files and
-puts the current application name in a module attribute.
-
-Also provides a `get_env` macro for concise configuration value retrieval.
+Reads, at compile time, a list of configuration files and persists the
+configuration of each file. Also puts the current application name in a module
+attribute and provides a `get_env` macro for concise configuration value
+retrieval.
 
 ## Installation
 
-Add `persist_config` to your list of dependencies in `mix.exs`.
-Also include the configuration files to be persisted in the package definition
-of `mix.exs` as shown below:
+Add `persist_config` to your list of dependencies in `mix.exs`. Also include
+the required configuration files in the package definition of `mix.exs`:
 
 ```elixir
 def project do
@@ -48,19 +47,25 @@ end
              defaults to `:app`
 - `:files` - (wildcard) paths, defaults to `["config/persist*.exs"]`
 
-Option `:files` lists the configuration files to be persisted.  
-Though not needed, these can still be imported in file `config/config.exs`.  
-For example: `import_config "persist_this_config.exs"`.
+Option `:files` lists the files whose configurations will be persisted.
 
-Each entry represents a (wildcard) path relative to the root.
-If the list is or ends up being empty, no files are persisted.
+Importing these files in `config/config.exs` is __needless__:
 
-When your project is used as a dependency, this package will
-allow the specified configuration files to be persisted.
+```elixir
+import Config
+import_config "persist_this_config.exs"
+```
 
-For example, you may configure some path to read an external
-file and want to still read that very file when your app is a
-dependency (without any path configuration in the parent app):
+Each entry represents a (wildcard) path relative to the root. If the list of
+paths is or ends up being empty, no configurations are persisted.
+
+When your project is used as a dependency, this package will allow the
+specified configuration files to have their configurations persisted during
+compilation.
+
+For example, you may configure some path to read an external file and you want
+to still read that __very__ file when your app is a dependency (without and
+despite any path configuration in the parent app). To achieve this:
 
 __1.__ Use a module attribute as a __constant__:
 
@@ -68,6 +73,8 @@ __1.__ Use a module attribute as a __constant__:
 use PersistConfig
 ...
 @path get_env(:path)
+...
+words = File.read!(@path)
 ```
 
 __2.__ Create a config file named, say, `config/persist_path.exs`:
@@ -90,7 +97,7 @@ defp package do
 end
 ```
 
-__Note:__ Such configurations must be truly __global__ and should otherwise be [avoided](https://hexdocs.pm/elixir/library-guidelines.html#avoid-application-configuration).
+__Note:__ Such configurations are __global__ and should otherwise be [avoided](https://hexdocs.pm/elixir/library-guidelines.html#avoid-application-configuration).
 
 #### Example 1
 
