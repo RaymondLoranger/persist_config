@@ -72,7 +72,7 @@ defmodule PersistConfig do
 
   ```elixir
   import Config
-  config :words_cache, path: "#{File.cwd!()}/words_cache/assets/words.txt"
+  config :words_cache, path: "#{File.cwd!()}/assets/words.txt"
   ```
 
   __3.__ In `mix.exs`, specify a package definition like this:
