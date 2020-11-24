@@ -1,9 +1,8 @@
 defmodule PersistConfig do
   @moduledoc ~S"""
-  Reads, at compile time, a list of configuration files and persists the
-  configuration of each file. Also puts the current application name in a module
-  attribute and provides a `get_env` macro for concise configuration value
-  retrieval.
+  Persists the configurations from a list of files during compilation. Also puts
+  the current application name in a module attribute and provides a `get_env`
+  macro for concise configuration value retrieval.
 
   ## Installation
 
@@ -124,10 +123,9 @@ defmodule PersistConfig do
   """
 
   @doc """
-  Reads, at compile time, a list of configuration files and persists the
-  configuration of each file. Also puts the current application name in a module
-  attribute and provides a `get_env` macro for concise configuration value
-  retrieval.
+  Persists the configurations from a list of files during compilation. Also puts
+  the current application name in a module attribute and provides a `get_env`
+  macro for concise configuration value retrieval.
 
   `use PersistConfig` supports the following options:
 

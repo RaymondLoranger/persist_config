@@ -2,10 +2,9 @@
 
 [![Build Status](https://travis-ci.org/RaymondLoranger/persist_config.svg?branch=master)](https://travis-ci.org/RaymondLoranger/persist_config)
 
-Reads, at compile time, a list of configuration files and persists the
-configuration of each file. Also puts the current application name in a module
-attribute and provides a `get_env` macro for concise configuration value
-retrieval.
+Persists the configurations from a list of files during compilation. Also puts
+the current application name in a module attribute and provides a `get_env`
+macro for concise configuration value retrieval.
 
 ## Installation
 
