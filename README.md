@@ -74,7 +74,7 @@ __2.__ Create a config file named, say, `config/persist_path.exs`:
 
 ```elixir
 import Config
-config :my_app, path: "#{File.cwd!()}/assets/words.txt"
+config :words_cache, path: "#{File.cwd!()}/assets/words.txt"
 ```
 
 __3.__ In `mix.exs`, specify a package definition like this:

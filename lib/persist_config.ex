@@ -1,5 +1,5 @@
 defmodule PersistConfig do
-  @moduledoc """
+  @moduledoc ~S"""
   Persists, at compile time, a list of configuration files and
   puts the current application name in a module attribute.
 
@@ -72,7 +72,7 @@ defmodule PersistConfig do
 
   ```elixir
   import Config
-  config :my_app, path: "#{File.cwd!()}/assets/words.txt"
+  config :words_cache, path: "#{File.cwd!()}/words_cache/assets/words.txt"
   ```
 
   __3.__ In `mix.exs`, specify a package definition like this:
@@ -116,6 +116,10 @@ defmodule PersistConfig do
   ```
   """
 
+  @doc """
+  Persists, at compile time, a list of configuration files and
+  puts the current application name in a module attribute.
+  """
   defmacro __using__(options \\ []) do
     app = options[:app] || :app
     files = options[:files] || ["config/persist*.exs"]
