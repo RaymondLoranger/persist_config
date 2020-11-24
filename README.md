@@ -90,7 +90,7 @@ defp package do
 end
 ```
 
-__Note:__ Such configurations must truly be __global__ and should otherwise be [avoided](https://hexdocs.pm/elixir/library-guidelines.html#avoid-application-configuration).
+__Note:__ Such configurations must be truly __global__ and should otherwise be [avoided](https://hexdocs.pm/elixir/library-guidelines.html#avoid-application-configuration).
 
 #### Example 1
 
