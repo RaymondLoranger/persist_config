@@ -58,9 +58,8 @@ import Config
 import_config "persist_this_config.exs"
 ```
 
-When your project is used as a dependency, this package will allow the
-specified configuration files to have their configurations persisted during
-compilation.
+Even when your project is used as a dependency, this package will load and
+persist the configurations from the specified files during compilation.
 
 For example, you may configure some path to read an external file and want
 to still read that __very__ file when your app is a dependency (without and
@@ -96,6 +95,8 @@ end
 
 #### Example 1
 
+The current application name is in @app by default:
+
 ```elixir
 use PersistConfig, files: ["config/persist_path.exs"]
 ...
@@ -105,6 +106,8 @@ use PersistConfig, files: ["config/persist_path.exs"]
 
 #### Example 2
 
+The current application name is in @my_app as an option:
+
 ```elixir
 use PersistConfig, app: :my_app
 ...
@@ -112,6 +115,9 @@ use PersistConfig, app: :my_app
 ```
 
 #### Example 3
+
+Macro `get_env` will retrieve configuration values at runtime
+when configuration is done by `config/config.exs` and friends.
 
 ```elixir
 use PersistConfig
