@@ -120,8 +120,7 @@ defmodule PersistConfig do
 
   @doc """
   Persists the configurations from a list of files during compilation. Also puts
-  the current application name in a module attribute and provides a `get_env`
-  macro for concise configuration value retrieval.
+  the current application name in a module attribute.
 
   `use PersistConfig` supports the following options:
 
