@@ -22,7 +22,7 @@ defmodule PersistConfig.MixProject do
 
   defp description do
     """
-    Persists configuration files at compile time.
+    Persists configurations from specified files at compile time.
     """
   end
 
