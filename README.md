@@ -2,9 +2,9 @@
 
 [![Build Status](https://travis-ci.org/RaymondLoranger/persist_config.svg?branch=master)](https://travis-ci.org/RaymondLoranger/persist_config)
 
-Persists the configurations from a list of files during compilation. Also puts
-the current application name in a module attribute and provides a `get_env`
-macro for concise configuration value retrieval.
+Persists the configurations from a list of files during compilation.
+Also puts the current application name in a module attribute and
+provides a `get_env` macro for concise configuration value retrieval.
 
 ## Installation
 
@@ -46,23 +46,23 @@ end
              defaults to `:app`
 - `:files` - wildcard paths, defaults to `["config/persist*.exs"]`
 
-Option `:files` lists the files whose configurations will be persisted.
+Option `:files` selects the files whose configurations will be persisted.
+Each wildcard path is relative to the root. If no matching files are found,
+no configurations are persisted.
 
-Importing these files in `config/config.exs` is __needless__:
+Although it is __needless__ to do so, you can still import the configurations
+from the above matching files in `config/config.exs` or friends. For example:
 
 ```elixir
 import Config
 import_config "persist_this_config.exs"
 ```
 
-Each entry represents a wildcard path relative to the root. If the list of
-paths is or ends up being empty, no configurations are persisted.
-
 When your project is used as a dependency, this package will allow the
 specified configuration files to have their configurations persisted during
 compilation.
 
-For example, you may configure some path to read an external file and you want
+For example, you may configure some path to read an external file and want
 to still read that __very__ file when your app is a dependency (without and
 despite any path configuration in the parent app). To achieve this:
 
@@ -72,11 +72,9 @@ __1.__ Use a module attribute as a __constant__:
 use PersistConfig
 ...
 @path get_env(:path)
-...
-words = File.read!(@path)
 ```
 
-__2.__ Create a config file named, say, `config/persist_path.exs`:
+__2.__ Create a configuration file named, say, `config/persist_path.exs`:
 
 ```elixir
 import Config
@@ -95,8 +93,6 @@ defp package do
   ]
 end
 ```
-
-__Note:__ Such configurations are __global__ and should otherwise be [avoided](https://hexdocs.pm/elixir/library-guidelines.html#avoid-application-configuration).
 
 #### Example 1
 
