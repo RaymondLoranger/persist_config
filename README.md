@@ -116,8 +116,8 @@ use PersistConfig, app: :my_app
 
 #### Example 3
 
-Macro `get_env` will retrieve configuration values at runtime
-when configuration is done by `config/config.exs` and friends.
+You can use macro `get_env` to retrieve configuration values at runtime
+when configuration is done by `config/config.exs` and friends:
 
 ```elixir
 use PersistConfig
