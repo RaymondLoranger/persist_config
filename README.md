@@ -77,6 +77,7 @@ __2.__ Create a configuration file named, say, `config/persist_path.exs`:
 
 ```elixir
 import Config
+
 config :words_cache, path: "#{File.cwd!()}/assets/words.txt"
 ```
 
