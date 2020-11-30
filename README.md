@@ -55,6 +55,7 @@ from the above matching files in `config/config.exs` or friends. For example:
 
 ```elixir
 import Config
+
 import_config "persist_this_config.exs"
 ```
 
@@ -84,6 +85,22 @@ config :words_cache, path: "#{File.cwd!()}/assets/words.txt"
 __3.__ In `mix.exs`, specify a package definition like this:
 
 ```elixir
+def project do
+  [
+    app: :words_cache,
+    ...
+    deps: deps(),
+    package: package(),
+    ...
+  ]
+end
+...
+def deps do
+  [
+    {:persist_config, "~> 0.4", runtime: false}
+  ]
+end
+...
 defp package do
   [
     files: [... "assets/words.txt", "config/persist*.exs"],
