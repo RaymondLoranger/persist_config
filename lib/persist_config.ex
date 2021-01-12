@@ -155,13 +155,13 @@ defmodule PersistConfig do
   defmacro __using__(options \\ []) do
     app = options[:app] || :app
     files = options[:files] || ["config/persist*.exs"]
-    files = files |> Enum.map(&Path.wildcard/1) |> List.flatten()
+    files = Enum.map(files, &Path.wildcard/1) |> List.flatten()
 
     quote bind_quoted: [app: app, files: files], unquote: true do
       import unquote(__MODULE__)
 
       Enum.each(files, fn file ->
-        file |> Config.Reader.read!() |> Application.put_all_env()
+        Config.Reader.read!(file) |> Application.put_all_env()
         @external_resource Path.expand(file)
       end)
 
