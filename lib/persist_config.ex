@@ -111,7 +111,7 @@ defmodule PersistConfig do
 
   #### Example 1
 
-  The current application name is in @app by default:
+  The current application name is in `@app` by default:
 
   ```elixir
   use PersistConfig, files: ["config/persist_path.exs"]
