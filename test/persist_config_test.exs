@@ -2,10 +2,10 @@ defmodule PersistConfigTest do
   use ExUnit.Case, async: true
   use PersistConfig
 
-  doctest PersistConfig
+  # doctest PersistConfig
 
-  @dummy_test1 Application.get_env(@app, :dummy_test1)
-  @dummy_test2 Application.get_env(@app, :dummy_test2)
+  @dummy_test1 get_env(:dummy_test1)
+  @dummy_test2 get_env(:dummy_test2)
 
   test "@app is the current application" do
     assert @app == :persist_config

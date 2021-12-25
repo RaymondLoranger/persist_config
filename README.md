@@ -4,12 +4,12 @@
 
 Persists the configurations from a list of files during compilation.
 Also puts the current application name in a module attribute and
-provides a `get_env` macro for concise configuration value retrieval.
+provides a `get_env/2` macro for concise configuration value retrieval.
 
 ## Installation
 
 Add `persist_config` to your list of dependencies in `mix.exs`. Also include
-the required configuration files in the package definition of `mix.exs`:
+the required configuration files in the `package` definition of `mix.exs`:
 
 ```elixir
 def project do
@@ -113,7 +113,7 @@ end
 
 #### Example 1
 
-The current application name is in @app by default:
+The current application name is in `@app` by default:
 
 ```elixir
 use PersistConfig, files: ["config/persist_path.exs"]
@@ -124,7 +124,7 @@ use PersistConfig, files: ["config/persist_path.exs"]
 
 #### Example 2
 
-The current application name is in @my_app as an option:
+The current application name is in `@my_app` as an option:
 
 ```elixir
 use PersistConfig, app: :my_app
@@ -134,11 +134,11 @@ use PersistConfig, app: :my_app
 
 #### Example 3
 
-You can use macro `get_env` to retrieve configuration values at runtime
+You can use macro `get_env/2` to retrieve configuration values at runtime
 when configuration is done by `config/config.exs` and friends:
 
 ```elixir
 use PersistConfig
 ...
-defp log?, do: get_env(:log?, true)
+defp level, do: get_env(:level, :all)
 ```

@@ -1,13 +1,13 @@
 defmodule PersistConfig do
   @moduledoc ~S"""
-  Persists the configurations from a list of files during compilation.
-  Also puts the current application name in a module attribute and
-  provides a `get_env` macro for concise configuration value retrieval.
+  Persists the configurations from a list of files during compilation. Also puts
+  the current application name in a module attribute and provides a `get_env/2`
+  macro for concise configuration value retrieval.
 
   ## Installation
 
   Add `persist_config` to your list of dependencies in `mix.exs`. Also include
-  the required configuration files in the package definition of `mix.exs`:
+  the required configuration files in the `package` definition of `mix.exs`:
 
   ```elixir
   def project do
@@ -44,9 +44,9 @@ defmodule PersistConfig do
   defaults to `:app`
   - `:files` - wildcard paths, defaults to `["config/persist*.exs"]`
 
-  Option `:files` selects the files whose configurations will be persisted.
-  Each wildcard path is relative to the root. If no matching files are found,
-  no configurations are persisted.
+  Option `:files` selects the files whose configurations will be persisted. Each
+  wildcard path is relative to the root. If no matching files are found, no
+  configurations are persisted.
 
   Although it is __needless__ to do so, you can still import the configurations
   from the above matching files in `config/config.exs` or friends. For example:
@@ -60,8 +60,8 @@ defmodule PersistConfig do
   Even when your project is used as a dependency, this package will load and
   persist the configurations from the specified files during compilation.
 
-  For example, you may configure some path to read an external file and want
-  to still read that __very__ file when your app is a dependency (without and
+  For example, you may configure some path to read an external file and want to
+  still read that __very__ file when your app is a dependency (without and
   despite any path configuration in the parent app). To achieve this:
 
   __1.__ Use a module attribute as a __constant__:
@@ -122,7 +122,7 @@ defmodule PersistConfig do
 
   #### Example 2
 
-  The current application name is in @my_app as an option:
+  The current application name is in `@my_app` as an option:
 
   ```elixir
   use PersistConfig, app: :my_app
@@ -132,13 +132,13 @@ defmodule PersistConfig do
 
   #### Example 3
 
-  You can use macro `get_env` to retrieve configuration values at runtime
+  You can use macro `get_env/2` to retrieve configuration values at runtime
   when configuration is done by `config/config.exs` and friends:
 
   ```elixir
   use PersistConfig
   ...
-  defp log?, do: get_env(:log?, true)
+  defp level, do: get_env(:level, :all)
   ```
   """
 
@@ -151,6 +151,10 @@ defmodule PersistConfig do
   - `:app`   - module attribute to hold the current application name,
   defaults to `:app`
   - `:files` - wildcard paths, defaults to `["config/persist*.exs"]`
+
+  Option `:files` selects the files whose configurations will be persisted. Each
+  wildcard path is relative to the root. If no matching files are found, no
+  configurations are persisted.
   """
   defmacro __using__(options \\ []) do
     app = options[:app] || :app
@@ -161,7 +165,7 @@ defmodule PersistConfig do
       import unquote(__MODULE__)
 
       Enum.each(files, fn file ->
-        Config.Reader.read!(file) |> Application.put_all_env()
+        Config.Reader.read!(file) |> Application.put_all_env(persistent: true)
         @external_resource Path.expand(file)
       end)
 
