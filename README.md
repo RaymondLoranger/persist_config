@@ -64,7 +64,7 @@ persist the configurations from the specified files during compilation.
 
 For example, you may configure some path to read an external file and want
 to still read that __very__ file when your app is a dependency (without and
-despite any path configuration in the parent app). To achieve this:
+despite any path configuration in the parent app). To achieve this, you may:
 
 __1.__ Use a module attribute as a __constant__:
 
