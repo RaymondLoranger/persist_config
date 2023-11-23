@@ -129,7 +129,7 @@ The current application name is in `@my_app` as an option:
 ```elixir
 use PersistConfig, app: :my_app
 ...
-@my_attr Application.get_env(@my_app, :my_attr)
+@my_attr get_env(@my_app, :my_attr)
 ```
 
 #### Example 3

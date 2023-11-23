@@ -127,7 +127,7 @@ defmodule PersistConfig do
   ```elixir
   use PersistConfig, app: :my_app
   ...
-  @my_attr Application.get_env(@my_app, :my_attr)
+  @my_attr get_app_env(@my_app, :my_attr)
   ```
 
   #### Example 3
@@ -182,6 +182,18 @@ defmodule PersistConfig do
   defmacro get_env(key, default \\ nil) do
     app = Mix.Project.config()[:app]
 
+    quote bind_quoted: [app: app, key: key, default: default] do
+      :application.get_env(app, key, default)
+    end
+  end
+
+  @doc """
+  Returns the value for `key` in the given `app`'s environment.
+
+  If the configuration parameter does not exist, returns the `default` value.
+  """
+  @doc since: "0.4.24"
+  defmacro get_app_env(app, key, default \\ nil) do
     quote bind_quoted: [app: app, key: key, default: default] do
       :application.get_env(app, key, default)
     end
