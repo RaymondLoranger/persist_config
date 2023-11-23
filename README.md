@@ -1,8 +1,9 @@
 # PersistConfig
 
 Persists the configurations from a list of files during compilation.
-Also puts the current application name in a module attribute and
-provides a `get_env/2` macro for concise configuration value retrieval.
+Also puts the current application name in a module attribute and provides
+macros `get_env/2`, `get_app_env/3` and `get_all_env/1` for concise
+configuration value retrieval.
 
 ## Installation
 
