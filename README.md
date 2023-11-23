@@ -1,7 +1,5 @@
 # PersistConfig
 
-[![Build Status](https://travis-ci.org/RaymondLoranger/persist_config.svg?branch=master)](https://travis-ci.org/RaymondLoranger/persist_config)
-
 Persists the configurations from a list of files during compilation.
 Also puts the current application name in a module attribute and
 provides a `get_env/2` macro for concise configuration value retrieval.
@@ -129,7 +127,7 @@ The current application name is in `@my_app` as an option:
 ```elixir
 use PersistConfig, app: :my_app
 ...
-@my_attr get_env(@my_app, :my_attr)
+@my_attr get_app_env(@my_app, :my_attr)
 ```
 
 #### Example 3
