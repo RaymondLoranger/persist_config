@@ -116,7 +116,7 @@ The current application name is in `@app` by default:
 ```elixir
 use PersistConfig, files: ["config/persist_path.exs"]
 ...
-@all_env Application.get_all_env(@app)
+@all_env get_all_env(@app)
 @path get_env(:path)
 ```
 

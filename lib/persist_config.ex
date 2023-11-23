@@ -2,7 +2,8 @@ defmodule PersistConfig do
   @moduledoc ~S"""
   Persists the configurations from a list of files during compilation. Also puts
   the current application name in a module attribute and provides macros
-  `get_env/2` and `get_app_env/3` for concise configuration value retrieval.
+  `get_env/2`, `get_app_env/3` and `get_all_env/1` for concise configuration
+  value retrieval.
 
   ## Installation
 
@@ -116,7 +117,7 @@ defmodule PersistConfig do
   ```elixir
   use PersistConfig, files: ["config/persist_path.exs"]
   ...
-  @all_env Application.get_all_env(@app)
+  @all_env get_all_env(@app)
   @path get_env(:path)
   ```
 
@@ -196,6 +197,16 @@ defmodule PersistConfig do
   defmacro get_app_env(app, key, default \\ nil) do
     quote bind_quoted: [app: app, key: key, default: default] do
       :application.get_env(app, key, default)
+    end
+  end
+
+  @doc """
+  Returns all key-value pairs for `app`.
+  """
+  @doc since: "0.4.27"
+  defmacro get_all_env(app) do
+    quote bind_quoted: [app: app] do
+      :application.get_all_env(app)
     end
   end
 end
