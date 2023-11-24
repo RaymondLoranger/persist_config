@@ -49,8 +49,8 @@ Option `:files` selects the files whose configurations will be persisted.
 Each wildcard path is relative to the root. If no matching files are found,
 no configurations will be persisted.
 
-Although it is __needless__ to do so, you can still import the configurations
-from the above matching files in `config/config.exs` or friends. For example:
+Though not required, you can still import the configurations from the above
+matching files in `config/config.exs` or friends. For example:
 
 ```elixir
 import Config
