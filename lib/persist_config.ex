@@ -1,9 +1,9 @@
 defmodule PersistConfig do
   @moduledoc ~S"""
-  Persists the configurations from a list of files during compilation. Also puts
-  the current application name in a module attribute and provides macros
-  `get_env/2`, `get_app_env/3` and `get_all_env/1` for concise configuration
-  value retrieval.
+  Persists the configurations from a list of files during compilation.
+  Also puts the current application name in a module attribute and provides
+  macros `get_env/2`, `get_app_env/3` and `get_all_env/1` for concise
+  configuration value retrieval.
 
   ## Installation
 
@@ -45,9 +45,9 @@ defmodule PersistConfig do
   defaults to `:app`
   - `:files` - wildcard paths, defaults to `["config/persist*.exs"]`
 
-  Option `:files` selects the files whose configurations will be persisted. Each
-  wildcard path is relative to the root. If no matching files are found, no
-  configurations are persisted.
+  Option `:files` selects the files whose configurations will be persisted.
+  Each wildcard path is relative to the root. If no matching files are found,
+  no configurations will be persisted.
 
   Though not required, you can still import the configurations from the above
   matching files in `config/config.exs` or friends. For example:
@@ -61,8 +61,8 @@ defmodule PersistConfig do
   Even when your project is used as a dependency, this package will load and
   persist the configurations from the specified files during compilation.
 
-  For example, you may configure some path to read an external file and want to
-  still read that __very__ file when your app is a dependency (without and
+  For example, you may configure some path to read an external file and want
+  to still read that __very__ file when your app is a dependency (without and
   despite any path configuration in the parent app). To achieve this, you may:
 
   __1.__ Use a module attribute as a __constant__:
@@ -144,8 +144,8 @@ defmodule PersistConfig do
   """
 
   @doc """
-  Persists the configurations from a list of files during compilation. Also puts
-  the current application name in a module attribute.
+  Persists the configurations from a list of files during compilation.
+  Also puts the current application name in a module attribute.
 
   `use PersistConfig` supports the following options:
 
@@ -153,9 +153,9 @@ defmodule PersistConfig do
   defaults to `:app`
   - `:files` - wildcard paths, defaults to `["config/persist*.exs"]`
 
-  Option `:files` selects the files whose configurations will be persisted. Each
-  wildcard path is relative to the root. If no matching files are found, no
-  configurations are persisted.
+  Option `:files` selects the files whose configurations will be persisted.
+  Each wildcard path is relative to the root. If no matching files are found,
+  no configurations will be persisted.
   """
   defmacro __using__(options \\ []) do
     app = options[:app] || :app
