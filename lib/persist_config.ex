@@ -158,8 +158,8 @@ defmodule PersistConfig do
   no configurations will be persisted.
   """
   defmacro __using__(options \\ []) do
-    app = options[:app] || :app
-    files = options[:files] || ["config/persist*.exs"]
+    app = Keyword.get(options, :app, :app)
+    files = Keyword.get(options, :files, ["config/persist*.exs"])
     files = Enum.map(files, &Path.wildcard/1) |> List.flatten()
 
     quote bind_quoted: [app: app, files: files], unquote: true do
