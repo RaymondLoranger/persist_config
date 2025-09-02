@@ -165,8 +165,15 @@ defmodule PersistConfig do
     quote bind_quoted: [app: app, files: files], unquote: true do
       import unquote(__MODULE__)
 
+      # Drop app if already configured...
+      k = fn app, key -> :application.get_env(app, key) == :undefined || app end
+      keys = [k.(:logger, :default_formatter), k.(:file_only_logger, :logger)]
+
       Enum.each(files, fn file ->
-        Config.Reader.read!(file) |> Application.put_all_env(persistent: true)
+        Config.Reader.read!(file)
+        |> Keyword.drop(keys)
+        |> Application.put_all_env(persistent: true)
+
         @external_resource Path.expand(file)
       end)
 
