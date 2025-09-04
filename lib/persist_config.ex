@@ -143,8 +143,6 @@ defmodule PersistConfig do
   ```
   """
 
-  alias __MODULE__.Proxy
-
   @doc """
   Persists the configurations from a list of files during compilation.
   Also puts the current application name in a module attribute.
@@ -168,11 +166,7 @@ defmodule PersistConfig do
       import unquote(__MODULE__)
 
       Enum.each(files, fn file ->
-        Config.Reader.read!(file)
-        |> Proxy.maybe_drop(file_only_logger: [:logger, :padding, :line_length])
-        |> Proxy.maybe_drop(logger: [:default_formatter])
-        |> Application.put_all_env(persistent: true)
-
+        Config.Reader.read!(file) |> Application.put_all_env(persistent: true)
         @external_resource Path.expand(file)
       end)
 
