@@ -34,6 +34,7 @@ defmodule PersistConfigTest do
 
   test "@all_logger_env" do
     assert Keyword.has_key?(@all_logger_env, :truncate)
+    assert Keyword.has_key?(@all_logger_env, :compile_time_purge_matching)
   end
 
   test "@all_what_env" do
