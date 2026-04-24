@@ -41,7 +41,7 @@ end
 
 `use PersistConfig` supports the following options:
 
-- `:app`   - module attribute to hold the current application name,
+- `:app` - module attribute to hold the current application name,
   defaults to `:app`
 - `:files` - wildcard paths, defaults to `["config/persist*.exs"]`
 

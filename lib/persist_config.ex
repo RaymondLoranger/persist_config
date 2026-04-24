@@ -1,6 +1,6 @@
 defmodule PersistConfig do
   @moduledoc ~S"""
-  Persists the configurations from a list of files during compilation.
+  Persists the configurations from a list of files __during compilation__.
   Also puts the current application name in a module attribute and provides
   macros `get_env/2`, `get_app_env/3` and `get_all_env/1` for concise
   configuration value retrieval.
@@ -29,6 +29,7 @@ defmodule PersistConfig do
   ...
   defp package do
     [
+    # NOTE: Config files...                 ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
       files: ["lib", "mix.exs", "README*", "config/persist*.exs"],
       maintainers: [...],
       licenses: [...],
@@ -59,7 +60,7 @@ defmodule PersistConfig do
   ```
 
   Even when your project is used as a dependency, this package will load and
-  persist the configurations from the specified files during compilation.
+  persist the configurations from the specified files __during compilation__.
 
   For example, you may configure some path to read an external file and want
   to still read that __very__ file when your app is a dependency (without and
@@ -71,6 +72,8 @@ defmodule PersistConfig do
   use PersistConfig
   ...
   @path get_env(:path)
+  ...
+  contents = File.read!(@path)
   ```
 
   __2.__ Create a configuration file named, say, `config/persist_path.exs`:
@@ -102,6 +105,7 @@ defmodule PersistConfig do
   ...
   defp package do
     [
+    #              ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓   ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
       files: [... "assets/words.txt", "config/persist*.exs"],
       maintainers: [...],
       licenses: [...],
@@ -144,7 +148,7 @@ defmodule PersistConfig do
   """
 
   @doc """
-  Persists the configurations from a list of files during compilation.
+  Persists the configurations from a list of files __during compilation__.
   Also puts the current application name in a module attribute.
 
   `use PersistConfig` supports the following options:

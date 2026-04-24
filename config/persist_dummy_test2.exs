@@ -1,3 +1,3 @@
 import Config
 
-config :persist_config, dummy_test2: :absolutely_too
+config :persist_config, dummy_test2: :dummy_test2

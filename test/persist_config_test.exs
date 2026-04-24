@@ -1,18 +1,13 @@
 defmodule PersistConfigTest do
   use ExUnit.Case, async: true
-  use PersistConfig
+  use PersistConfig, app: :this_app
 
   # doctest PersistConfig
 
   @dummy_test1 get_env(:dummy_test1)
-  @dummy_test2 get_env(:dummy_test2)
-  @app_dummy_test1 get_app_env(@app, :dummy_test1)
-  @app_dummy_test2 get_app_env(@app, :dummy_test2)
-  @all_logger_env get_all_env(:logger)
-  @all_what_env get_all_env(:what)
 
-  test "@app is the current application" do
-    assert @app == :persist_config
+  test "@this_app is the current application" do
+    assert @this_app == :persist_config
   end
 
   test "@external_resource" do
@@ -22,22 +17,22 @@ defmodule PersistConfigTest do
            ]
   end
 
-  test "@dummy_test1" do
-    assert @dummy_test1 == :absolutely
-    assert @dummy_test1 == @app_dummy_test1
+  test "compile-time assignment" do
+    assert @dummy_test1 == :dummy_test1
   end
 
-  test "@dummy_test2" do
-    assert @dummy_test2 == :absolutely_too
-    assert @dummy_test2 == @app_dummy_test2
+  # `use PersistConfig` persists the configurations in `config/persist*.exs`.
+  test "config persisted by `use PersistConfig`" do
+    assert get_env(:dummy_test2) == :dummy_test2
   end
 
-  test "@all_logger_env" do
-    assert Keyword.has_key?(@all_logger_env, :truncate)
-    assert Keyword.has_key?(@all_logger_env, :compile_time_purge_matching)
+  # `mix test` persists the configurations in `config/config.exs`.
+  test "config persisted by `mix test`" do
+    assert get_env(:speed_of_light_in_meters_per_second) == 299_792_458
   end
 
-  test "@all_what_env" do
-    assert @all_what_env == []
+  # `runtime.exs` overrides `config/config.exs`.
+  test "runtime config overrides build-time config" do
+    assert get_env(:pi) == 3.14159
   end
 end
