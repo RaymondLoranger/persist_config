@@ -50,7 +50,7 @@ defmodule PersistConfigCheck do
     IO.ANSI.format([:light_green, msg]) |> IO.puts()
   end
 
-  defp check(val, label) do
-    IO.inspect(val, label: label)
+  defp check(value, label) do
+    IO.inspect(value, label: label)
   end
 end

@@ -4,7 +4,7 @@ defmodule PersistConfig.MixProject do
   def project do
     [
       app: :persist_config,
-      version: "0.4.48",
+      version: "0.4.49",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       name: "Persist Config",
@@ -28,7 +28,7 @@ defmodule PersistConfig.MixProject do
 
   defp package do
     [
-      # NOTE:       ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
+      # NOTE:      ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
       files: ["lib/persist_config.ex", "mix.exs", "README*"],
       maintainers: ["Raymond Loranger"],
       licenses: ["MIT"],

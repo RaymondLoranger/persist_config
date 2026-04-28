@@ -66,7 +66,7 @@ defmodule PersistConfig do
   to still read that __very__ file when your app is a dependency (without and
   despite any path configuration in the parent app). To achieve this, you may:
 
-  __1.__ Use a module attribute as a __constant__:
+  __1.__ Use a module attribute as a _constant_:
 
   ```elixir
   use PersistConfig
@@ -105,7 +105,7 @@ defmodule PersistConfig do
   ...
   defp package do
     [
-    #              ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓   ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
+      # NOTE:      ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓   ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
       files: [... "assets/words.txt", "config/persist*.exs"],
       maintainers: [...],
       licenses: [...],
@@ -138,7 +138,7 @@ defmodule PersistConfig do
   #### Example 3
 
   You can use macro `get_env/2` to retrieve configuration values at runtime
-  when configuration is done by `config/config.exs` and friends:
+  from either `config/config.exs` and friends or `config/runtime.exs`:
 
   ```elixir
   use PersistConfig
@@ -153,7 +153,7 @@ defmodule PersistConfig do
 
   `use PersistConfig` supports the following options:
 
-  - `:app`   - module attribute to hold the current application name,
+  - `:app` - module attribute to hold the current application name,
     defaults to `:app`
   - `:files` - wildcard paths, defaults to `["config/persist*.exs"]`
 

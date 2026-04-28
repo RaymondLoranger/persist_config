@@ -66,12 +66,14 @@ For example, you may configure some path to read an external file and want
 to still read that _very_ file when your app is a dependency (without and
 despite any path configuration in the parent app). To achieve this, you may:
 
-__1.__ Use a module attribute as a __constant__:
+__1.__ Use a module attribute as a _constant_:
 
 ```elixir
 use PersistConfig
 ...
 @path get_env(:path)
+...
+contents = File.read!(@path)
 ```
 
 __2.__ Create a configuration file named, say, `config/persist_path.exs`:
@@ -103,7 +105,8 @@ end
 ...
 defp package do
   [
-    files: [... "assets/words.txt", "config/persist*.exs"],
+    # NOTE:       ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓   ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
+    files: [..., "assets/words.txt", "config/persist*.exs"],
     maintainers: [...],
     licenses: [...],
     links: %{...}
@@ -135,7 +138,7 @@ use PersistConfig, app: :my_app
 #### Example 3
 
 You can use macro `get_env/2` to retrieve configuration values at runtime
-when configuration is done by `config/config.exs` and friends:
+from either `config/config.exs` and friends or `config/runtime.exs`:
 
 ```elixir
 use PersistConfig
