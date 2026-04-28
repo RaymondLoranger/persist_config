@@ -63,7 +63,7 @@ defmodule PersistConfig do
   persist the configurations from the specified files _during compilation_.
 
   For example, you may configure some path to read an external file and want
-  to still read that __very__ file when your app is a dependency (without and
+  to still read that _very_ file when your app is a dependency (without and
   despite any path configuration in the parent app). To achieve this, you may:
 
   __1.__ Use a module attribute as a _constant_:
