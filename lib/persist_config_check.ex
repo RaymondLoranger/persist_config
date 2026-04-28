@@ -1,4 +1,6 @@
 defmodule PersistConfigCheck do
+  @moduledoc false
+
   use PersistConfig
 
   @dummy_test1 get_env(:dummy_test1)
