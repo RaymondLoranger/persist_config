@@ -29,6 +29,7 @@ end
 ...
 defp package do
   [
+    # NOTE: Config files...               ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
     files: ["lib", "mix.exs", "README*", "config/persist*.exs"],
     maintainers: [...],
     licenses: [...],
