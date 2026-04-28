@@ -1,6 +1,6 @@
 # PersistConfig
 
-Persists the configurations from a list of files during compilation.
+Persists the configurations from a list of files _during compilation_.
 Also puts the current application name in a module attribute and provides
 macros `get_env/2`, `get_app_env/3` and `get_all_env/1` for concise
 configuration value retrieval.
@@ -59,7 +59,7 @@ import_config "persist_this_config.exs"
 ```
 
 Even when your project is used as a dependency, this package will load and
-persist the configurations from the specified files during compilation.
+persist the configurations from the specified files _during compilation_.
 
 For example, you may configure some path to read an external file and want
 to still read that __very__ file when your app is a dependency (without and
