@@ -1,5 +1,8 @@
 import Config
 
+# Same config as `config/persist_dummy_test1.exs`...
+config :persist_config, dummy_test1: DUMMY_TEST1
+
 # Less accurate here than in `runtime.exs`...
 config :persist_config, pi: 3.1416
 

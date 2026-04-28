@@ -33,6 +33,6 @@ defmodule PersistConfigTest do
 
   # `runtime.exs` overrides `config/config.exs`.
   test "runtime config overrides build-time config" do
-    assert get_env(:pi) == 3.14159
+    assert get_env(:pi) == 3.14159265
   end
 end
