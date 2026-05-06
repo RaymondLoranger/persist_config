@@ -164,7 +164,7 @@ defmodule PersistConfig do
   defmacro __using__(options \\ []) do
     app = Keyword.get(options, :app, :app)
     files = Keyword.get(options, :files, ["config/persist*.exs"])
-    files = Enum.map(files, &Path.wildcard/1) |> List.flatten()
+    files = Enum.flat_map(files, &Path.wildcard/1)
 
     quote bind_quoted: [app: app, files: files], unquote: true do
       import unquote(__MODULE__)

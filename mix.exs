@@ -4,7 +4,7 @@ defmodule PersistConfig.MixProject do
   def project do
     [
       app: :persist_config,
-      version: "0.4.51",
+      version: "0.4.52",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       name: "Persist Config",
