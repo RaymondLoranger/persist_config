@@ -16,6 +16,7 @@ defmodule PersistConfigCheck do
   # - etc.
 
   # To run => mix run -e 'PersistConfigCheck.check_env'
+  @spec check_env :: :ok
   def check_env do
     puts("\n`config/persist_dummy_test?.exs` loaded at compile-time...")
     check(@dummy_test1, "@dummy_test1 (should be :dummy_test1)")
@@ -36,23 +37,25 @@ defmodule PersistConfigCheck do
   end
 
   # To run => mix run -e 'PersistConfigCheck.check_all_env'
+  @spec check_all_env :: :ok
   def check_all_env do
     puts("\nCompile-time all env of :persist_config...")
     check(@persist_config_all_env, "@persist_config_all_env")
 
     puts("\nRuntime all env of :persist_config...")
     get_all_env(@app) |> check(:persist_config_all_env)
-
-    :ok
   end
 
   ## Private functions
 
+  @spec puts(String.t()) :: :ok
   defp puts(msg) do
     IO.ANSI.format([:light_green, msg]) |> IO.puts()
   end
 
+  @spec check(term, String.t() | atom) :: :ok
   defp check(value, label) do
     IO.inspect(value, label: label)
+    :ok
   end
 end
