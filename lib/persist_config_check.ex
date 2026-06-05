@@ -15,7 +15,7 @@ defmodule PersistConfigCheck do
   # - `config/runtimeexs` overrides `config/config.exs`
   # - etc.
 
-  # To run => mix run -e 'PersistConfigCheck.check_env'
+  # To run => mix run -e 'PersistConfigCheck.check_env()'
   @spec check_env :: :ok
   def check_env do
     puts("\n`config/persist_dummy_test?.exs` loaded at compile-time...")
@@ -32,11 +32,9 @@ defmodule PersistConfigCheck do
     puts("\n`config/runtime.exs` overrides `config/config.exs`...")
     check(@pi, "@pi (should be 3.1416)")
     get_env(:pi) |> check(":pi (should be 3.14159265)")
-
-    :ok
   end
 
-  # To run => mix run -e 'PersistConfigCheck.check_all_env'
+  # To run => mix run -e 'PersistConfigCheck.check_all_env()'
   @spec check_all_env :: :ok
   def check_all_env do
     puts("\nCompile-time all env of :persist_config...")
