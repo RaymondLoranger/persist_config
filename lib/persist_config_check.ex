@@ -12,7 +12,7 @@ defmodule PersistConfigCheck do
   # Confirms that:
   # - `config/config.exs` is loaded at runtime
   # - `config/persist_dummy_test?.exs` is not loaded at runtime
-  # - `config/runtimeexs` overrides `config/config.exs`
+  # - `config/runtime.exs` overrides `config/config.exs`
   # - etc.
 
   # To run => mix run -e 'PersistConfigCheck.check_env()'

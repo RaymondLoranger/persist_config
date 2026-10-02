@@ -43,7 +43,7 @@ defmodule PersistConfig do
   `use PersistConfig` supports the following options:
 
   - `:app`   - module attribute to hold the current application name,
-    defaults to `:app`
+    defaults to `:app` (accessed via `@app`) (accessed via `@app`)
   - `:files` - wildcard paths, defaults to `["config/persist*.exs"]`
 
   Option `:files` selects the files whose configurations will be persisted.
@@ -154,7 +154,7 @@ defmodule PersistConfig do
   `use PersistConfig` supports the following options:
 
   - `:app` - module attribute to hold the current application name,
-    defaults to `:app`
+    defaults to `:app` (accessed via `@app`)
   - `:files` - wildcard paths, defaults to `["config/persist*.exs"]`
 
   Option `:files` selects the files whose configurations will be persisted.
@@ -171,7 +171,6 @@ defmodule PersistConfig do
 
       Enum.each(files, fn file ->
         Config.Reader.read!(file) |> Application.put_all_env(persistent: true)
-        @external_resource Path.expand(file)
       end)
 
       Module.put_attribute(__MODULE__, app, Mix.Project.config()[:app])
