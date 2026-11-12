@@ -1,4 +1,4 @@
-defmodule PersistConfigCheck do
+defmodule PersistConfig.Check do
   @moduledoc false
 
   use PersistConfig
@@ -18,11 +18,11 @@ defmodule PersistConfigCheck do
   # To run => mix run -e 'PersistConfigCheck.check_env()'
   @spec check_env :: :ok
   def check_env do
-    puts("\n`config/persist_dummy_test?.exs` loaded at compile-time...")
+    puts("\n`config/persist_dummy_test{1,2}.exs` loaded at compile-time...")
     check(@dummy_test1, "@dummy_test1 (should be :dummy_test1)")
     check(@dummy_test2, "@dummy_test2 (should be :dummy_test2)")
 
-    puts("\n`config/persist_dummy_test?.exs` not loaded at runtime...")
+    puts("\n`config/persist_dummy_test{1,2}.exs` not loaded at runtime...")
     get_env(:dummy_test1) |> check(":dummy_test1 (should be DUMMY_TEST1)")
     get_env(:dummy_test2) |> check(":dummy_test2 (should be nil)")
 
